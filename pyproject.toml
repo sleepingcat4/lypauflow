@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lyapuflow"
+version = "0.1.0"
+description = "Lyapunov feedback for image and audio flow inverse problems"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.2", "numpy>=1.24", "Pillow>=10", "scipy>=1.11"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+sd3 = ["diffusers>=0.32", "transformers>=4.46", "accelerate>=1", "sentencepiece", "protobuf"]
+
+[project.scripts]
+lyapuflow = "lyapuflow.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["lyapuflow*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
